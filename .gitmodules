@@ -1,2 +1,3 @@
 [submodule "lacrosse"]
-	url = https://support.gitkraken.com/working-with-repositories/submodules/
+    path = submodule/lacrosse
+	url = https://github.com/ae26/lacrosse.git
