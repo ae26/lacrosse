@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -36,7 +36,9 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
-
+        // ##### 追加 ##### //
+        $this->mapAdminRoutes();
+        // ##### ここまで ##### //
         $this->mapWebRoutes();
 
         //
@@ -70,4 +72,16 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
     }
+
+    // ##### 追加 ##### //
+    protected function mapAdminRoutes()
+    {
+        Route::prefix('admin')
+             ->middleware('web')
+             ->as('admin.')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/admin.php'));
+    }
+    // ##### ここまで ##### //
+
 }
